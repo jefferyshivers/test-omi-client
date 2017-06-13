@@ -1,0 +1,224 @@
+{
+  "nested": {
+    "IndividualIdentity": {
+      "fields": {
+        "name": {
+          "type": "string",
+          "id": 1
+        },
+        "IPI": {
+          "type": "string",
+          "id": 2
+        },
+        "ISNI": {
+          "type": "string",
+          "id": 3
+        },
+        "streetAddress": {
+          "type": "string",
+          "id": 4
+        },
+        "pubkey": {
+          "type": "string",
+          "id": 5
+        }
+      }
+    },
+    "OrganizationalIdentity": {
+      "fields": {
+        "name": {
+          "type": "string",
+          "id": 1
+        },
+        "type": {
+          "type": "Type",
+          "id": 2
+        },
+        "IPI": {
+          "type": "string",
+          "id": 3
+        },
+        "streetAddress": {
+          "type": "string",
+          "id": 4
+        },
+        "pubkey": {
+          "type": "string",
+          "id": 5
+        }
+      },
+      "nested": {
+        "Type": {
+          "values": {
+            "LABEL": 0,
+            "PUBLISHER": 1
+          }
+        }
+      }
+    },
+    "Recording": {
+      "fields": {
+        "title": {
+          "type": "string",
+          "id": 1
+        },
+        "type": {
+          "type": "Type",
+          "id": 2
+        },
+        "ISRC": {
+          "type": "string",
+          "id": 3
+        },
+        "labelName": {
+          "type": "string",
+          "id": 4
+        },
+        "contributorSplits": {
+          "rule": "repeated",
+          "type": "ContributorSplit",
+          "id": 5
+        },
+        "derivedWorkSplits": {
+          "rule": "repeated",
+          "type": "DerivedWorkSplit",
+          "id": 6
+        },
+        "derivedRecordingSplits": {
+          "rule": "repeated",
+          "type": "DerivedRecordingSplit",
+          "id": 7
+        },
+        "overallSplit": {
+          "type": "RecordingOverallSplit",
+          "id": 8
+        },
+        "registeringPubkey": {
+          "type": "string",
+          "id": 9
+        }
+      },
+      "nested": {
+        "Type": {
+          "values": {
+            "SONG": 0,
+            "MIX": 1,
+            "COMPILATION": 2,
+            "VISUAL_WORK": 3
+          }
+        },
+        "RecordingOverallSplit": {
+          "fields": {
+            "derivedWorkPortion": {
+              "type": "uint32",
+              "id": 1
+            },
+            "derivedRecordingPortion": {
+              "type": "uint32",
+              "id": 2
+            },
+            "contributorPortion": {
+              "type": "uint32",
+              "id": 3
+            }
+          }
+        },
+        "ContributorSplit": {
+          "fields": {
+            "split": {
+              "type": "uint32",
+              "id": 1
+            },
+            "contributorName": {
+              "type": "string",
+              "id": 2
+            }
+          }
+        },
+        "DerivedWorkSplit": {
+          "fields": {
+            "split": {
+              "type": "uint32",
+              "id": 1
+            },
+            "workName": {
+              "type": "string",
+              "id": 2
+            }
+          }
+        },
+        "DerivedRecordingSplit": {
+          "fields": {
+            "split": {
+              "type": "uint32",
+              "id": 1
+            },
+            "recordingName": {
+              "type": "string",
+              "id": 2
+            }
+          }
+        }
+      }
+    },
+    "OMITransactionPayload": {
+      "fields": {
+        "action": {
+          "type": "string",
+          "id": 1
+        },
+        "data": {
+          "type": "bytes",
+          "id": 2
+        }
+      }
+    },
+    "Work": {
+      "fields": {
+        "title": {
+          "type": "string",
+          "id": 1
+        },
+        "ISWC": {
+          "type": "string",
+          "id": 2
+        },
+        "songwriterPublisherSplits": {
+          "rule": "repeated",
+          "type": "SongwriterPublisherSplit",
+          "id": 3
+        },
+        "registeringPubkey": {
+          "type": "string",
+          "id": 4
+        }
+      },
+      "nested": {
+        "SongwriterPublisher": {
+          "fields": {
+            "songwriterName": {
+              "type": "string",
+              "id": 1
+            },
+            "publisherName": {
+              "type": "string",
+              "id": 2
+            }
+          }
+        },
+        "SongwriterPublisherSplit": {
+          "fields": {
+            "split": {
+              "type": "uint32",
+              "id": 1
+            },
+            "songwriterPublisher": {
+              "type": "SongwriterPublisher",
+              "id": 2
+            }
+          }
+        }
+      }
+    }
+  }
+}
